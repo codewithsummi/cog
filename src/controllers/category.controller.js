@@ -2,7 +2,13 @@ const getAllCategories=async (req,res)=>{
     res.send("Get all categories")
 }
 const addCategory=async (req,res)=>{
-    res.send("Add category")
+     try{
+        let productImage=req.file.filename;
+         res.send("Add Category")
+    }
+    catch(err){
+        res.send("No Add Category")
+    }
 }
 const singleCategory=async (req,res)=>{
     res.send("Single category")

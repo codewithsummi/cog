@@ -1,9 +1,10 @@
 import express from 'express';
 import { addProduct, delProduct, editProduct, getAllProducts, singleProduct } from '../controllers/product.controller.js';
+import auth from '../middleware/auth.middleware.js';
 const router=express.Router();
 router.get("/",getAllProducts);
 router.get("/single/:id",singleProduct);
-router.post("/add",addProduct);
-router.delete("/single/:id",delProduct);
-router.put("/single/:id",editProduct);
+router.post("/add",auth,upload('attach'),addProduct);
+router.delete("/single/:id",auth,delProduct);
+router.put("/single/:id",auth,editProduct);
 export default router;
